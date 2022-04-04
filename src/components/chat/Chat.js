@@ -9,7 +9,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import db from "../../firebase";
 import firebase from "firebase";
 import "./Chat.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useStateValue } from "../../context/StateProvider";
 import { actionTypes } from "../../reducer";
 import UseWindowDimensions from "../../hooks/useWindowDimensions";
@@ -24,14 +24,13 @@ function Chat() {
   const [roomName, setRoomName] = useState("false");
   const [messages, setMessages] = useState([]);
   const [toggler, setToggler] = useState(true);
+  const displayName = localStorage.getItem("displayName");
   const [{ togglerState }, dispatch] = useStateValue();
-  const [{ photoURL }] = useStateValue();
   const [emoji, setEmoji] = useState(false);
   const [issendChecked, setIssendChecked] = useState(false);
   const [datewise, setDateWise] = useState([]);
   const [lastseenPhoto, setLastseen] = useState("");
   const { width } = UseWindowDimensions();
-  const displayName = localStorage.getItem("displayName");
 
   const [playOn] = useSound(`${process.env.PUBLIC_URL}/send.mp3`, {
     volume: 0.5,
@@ -98,7 +97,7 @@ function Chat() {
 
   if (messages.length > 0) {
     let blankArray = [];
-    let dateArray = [];
+    let dateArray = ["04 Apr"];
     let index = 0;
 
     messages.forEach(function (message, i) {
@@ -115,6 +114,7 @@ function Chat() {
       let messageDate = String(
         new Date(message.timestamp?.toDate()).toUTCString()
       ).slice(5, 12);
+      // console.log((message.timestamp+new Date()?.getTimezoneOffset()))
       if (messageDate === dateArray[index] && i === messages.length - 1) {
         blankArray.push({
           messageData: message.message,
@@ -188,6 +188,8 @@ function Chat() {
       togglerState: togglerState + 1,
     });
   };
+
+  console.log(datewise);
 
   return (
     <>
@@ -404,13 +406,6 @@ function Chat() {
                 placeholder="Type a message"
                 onChange={(e) => setInput(e.target.value)}
                 onClick={checkEmojiClose}
-                disabled={
-                  roomName === "Admin: Ali"
-                    ? (displayName == "Shekh Aliul WqnNsFNEPr" ? true : false)
-                      ? false
-                      : true
-                    : false
-                }
               />
               <button type="submit" onClick={sendMessage}>
                 Send A message
