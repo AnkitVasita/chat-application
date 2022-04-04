@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "./SidebarChat.css";
-import db from "./firebase";
+import db from "../../firebase";
 import { Link } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
-import { actionTypes } from "./reducer";
+import { useStateValue } from "../../context/StateProvider";
+import { actionTypes } from "../../reducer";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import firebase from "firebase";
-import { password } from "./constants";
+import { password } from "../../utills/constants";
 
 function SidebarChat(props) {
   const [seed, setSeed] = useState("");

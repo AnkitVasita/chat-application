@@ -3,15 +3,15 @@ import { Avatar, Collapse, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
-import SidebarChat from "./SidebarChat";
+import SidebarChat from "../SidebarChat/SidebarChat";
 import "./Sidebar.css";
 import MenuIcon from "@material-ui/icons/Menu";
-import db from "./firebase";
-import { useStateValue } from "./StateProvider";
-import { actionTypes } from "./reducer";
-import UseWindowDimensions from "./UseWindowDimensions";
+import db from "../../firebase";
+import { useStateValue } from "../../context/StateProvider";
+import { actionTypes } from "../../reducer";
+import UseWindowDimensions from "../../hooks/useWindowDimensions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);

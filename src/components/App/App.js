@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Sidebar from "./Sidebar";
-import Chat from "./Chat";
+import Sidebar from "../Sidebar/Sidebar";
+import Chat from "../chat/Chat";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./Login";
-import { useStateValue } from "./StateProvider";
+import Login from "../login/Login";
+import { useStateValue } from "../../context/StateProvider";
 // import UseWindowDimensions from "./UseWindowDimensions";
 
 function App() {

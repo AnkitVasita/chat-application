@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import SidebarChatList from "./SidebarChatList";
+import SidebarChatList from "../../SidebarChatList";
 import "./DrawerPhone.css";
 
 const drawerWidth = 240;
