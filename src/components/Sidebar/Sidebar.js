@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Collapse, IconButton } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
@@ -12,6 +12,7 @@ import { actionTypes } from "../../reducer";
 import UseWindowDimensions from "../../hooks/useWindowDimensions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Loader from "../loader/Loader";
+import { useHistory } from "react-router-dom";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
@@ -22,6 +23,7 @@ function Sidebar() {
   const [input, setInput] = useState("");
   const [logout, setLogout] = useState(false);
   const { width } = UseWindowDimensions();
+  const history = useHistory();
 
   const matcher = (s, values) => {
     const re = RegExp(`.*${s.toLowerCase().split("").join(".*")}.*`);
@@ -35,6 +37,7 @@ function Sidebar() {
 
   const exitApp = () => {
     localStorage.removeItem("uid");
+    history.push("/");
     window.location.reload();
     setLogout(true);
   };
